@@ -13,7 +13,7 @@ describe("Bingo", function () {
     async function deployBingoFixture() {
         const [owner, playerOne, playerTwo, playerThree] = await ethers.getSigners();
         const Bingo = await ethers.getContractFactory("Bingo");
-        const bingo = await Bingo.deploy(turnDuration, joinDuration, entryFee);
+        const bingo = await Bingo.deploy(owner.address, turnDuration, joinDuration, entryFee);
 
         async function pickUntilWin(player: Signer, attempt = 1): Promise<boolean> {
             await bingo.pickNumber()
@@ -69,8 +69,9 @@ describe("Bingo", function () {
 
     it("should not allow owner to pick bingo number before turn duration ends", async function () {
         const turnDuration = 5
+        const [owner] = await ethers.getSigners();
         const Bingo = await ethers.getContractFactory("Bingo");
-        const bingo = await Bingo.deploy(turnDuration, joinDuration, entryFee);
+        const bingo = await Bingo.deploy(owner.address, turnDuration, joinDuration, entryFee);
         await delay((joinDuration + 1) * 1000)
         await bingo.pickNumber()
         await expect(bingo.pickNumber()).to.be.revertedWith('can\'t pick number before turn period ends')
