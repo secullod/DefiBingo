@@ -1,8 +1,6 @@
-import "@openzeppelin/contracts/access/Ownable.sol";
-
 pragma solidity >=0.7.0 <0.9.0;
 
-contract Bingo is Ownable {
+contract Bingo {
 
     event GameWon(address indexed player, uint indexed winnings);
     event NumberPicked(uint8 indexed pick);
@@ -11,6 +9,7 @@ contract Bingo is Ownable {
     event JoinDurationUpdated(uint indexed newJoinDuration);
     event TurnDurationUpdated(uint indexed newTurnDuration);
 
+    address public owner;
     uint256 public turnDuration;
     uint256 public joinDuration;
     uint256 public entryFee;
@@ -25,6 +24,7 @@ contract Bingo is Ownable {
     uint8[] public pickedNumbersArray;
 
     constructor(
+        address _owner,
         uint256 _turnDuration,
         uint256 _joinDuration,
         uint256 _entryFee
@@ -34,6 +34,12 @@ contract Bingo is Ownable {
         entryFee = _entryFee;
         bingoStartTime = block.timestamp;
         lastTurnTime = block.timestamp;
+        owner = _owner;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "only owner can perform operation");
+        _;
     }
 
     modifier gameRunning() {

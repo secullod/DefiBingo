@@ -11,7 +11,7 @@ contract BingoFactory {
     function createBingo(uint256 _turn_duration,
         uint256 _join_duration,
         uint256 _entry_fee) public {
-        Bingo newBingoGame = new Bingo(_turn_duration, _join_duration, _entry_fee);
+        Bingo newBingoGame = new Bingo(msg.sender, _turn_duration, _join_duration, _entry_fee);
         bingoGames.push(newBingoGame);
         emit GameCreated(address(newBingoGame));
     }
