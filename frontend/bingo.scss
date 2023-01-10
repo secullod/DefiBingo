@@ -1,0 +1,110 @@
+body {
+  font-family: Arial;
+  margin: unset;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FF2E2E;
+  width: 200px;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  h1 {
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    color: white;
+  }
+}
+
+.red {
+  background: red;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  font-weight: bold;
+
+}
+
+.board-row {
+  display: flex;
+}
+
+.picks {
+  display: flex;
+  margin: 15px;
+  align-items: center;
+  font-weight: bold;
+
+  h2 {
+    margin: unset;
+  }
+
+  .board-row {
+    margin-left: 10px;
+  }
+
+  .bingo-square {
+    margin: 1px;
+  }
+}
+
+.boards-row {
+  display: flex;
+}
+
+.bingo-square {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.game-row {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+
+  h2 {
+    margin: unset;
+    margin: 15px;
+  }
+}
+
+.btn {
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bold;
+  background: #ff2e2e;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  &:active {
+    transform: translate(1px, 1px);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background: #ff2e2e;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
