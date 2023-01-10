@@ -1,7 +1,7 @@
 {
   "name": "bingo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "license": "MIT",
   "scripts": {
     "start": "parcel frontend/index.html",
